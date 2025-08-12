@@ -1,11 +1,19 @@
-const Form = ({getWeather}) => {
-    const getCity = e => {
+import {useDispatch} from "react-redux";
+import {fetchWeather} from "../actions/weatherAction.js";
+
+const Form = () => {
+
+    const dispatch = useDispatch();
+
+    const handleSubmit = e => {
+        console.log("-----------+++++++++++++++++--------handleSubmit", e);
         e.preventDefault();
         const city = e.currentTarget.city.value.trim();
-        getWeather(city);
+        dispatch(fetchWeather(city));
     }
+
     return (
-        <form onSubmit={getCity}>
+        <form onSubmit={handleSubmit}>
             <input name={'city'} type="text" placeholder="City name"/>
             <button type={'submit'}>Get Weather</button>
         </form>

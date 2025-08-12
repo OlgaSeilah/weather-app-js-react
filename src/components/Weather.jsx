@@ -1,15 +1,19 @@
 import {Fragment} from "react";
+import {useSelector} from "react-redux";
 
-const Weather = ({weather, message}) => {
+const Weather = () => {
+
+    const {country, city, pressure, sunset, temp} = useSelector(state => state.weather);
+    const message = useSelector(state => state.message);
 
     return (
         <div className={'infoWeath'}>
             {!message &&
                 <>
-                    <p>Location: {weather.country}, {weather.city}</p>
-                    <p>Temp: {weather.temp}</p>
-                    <p>Pressure: {weather.pressure}</p>
-                    <p>Sunset: {weather.sunset}</p>
+                    <p>Location: {country}, {city}</p>
+                    <p>Temp: {temp}</p>
+                    <p>Pressure: {pressure}</p>
+                    <p>Sunset: {sunset}</p>
                 </>
             }
             {message}
