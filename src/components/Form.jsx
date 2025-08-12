@@ -6,7 +6,6 @@ const Form = () => {
     const dispatch = useDispatch();
 
     const handleSubmit = e => {
-        console.log("-----------+++++++++++++++++--------handleSubmit", e);
         e.preventDefault();
         const city = e.currentTarget.city.value.trim();
         dispatch(fetchWeather(city));
